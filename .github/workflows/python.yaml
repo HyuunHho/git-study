@@ -17,12 +17,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Display Python version
         run: |
-          python -c "import sys; print(sys.version)" >> my-python.txt
-          python -c "import sys; print(sys.version)" >> my-python.txt
-          python -c "import sys; print(sys.version)" >> my-python.txt
+          python -c "import sys; print(sys.version)" > my-python-3.8.txt
+          python -c "import sys; print(sys.version)" > my-python-3.9.txt
+          python -c "import sys; print(sys.version)" > my-python-3.10.txt
         
       - name: Accidentally upload to the same artifact via multiple jobs
         uses: actions/upload-artifact@v3
         with:
           name: my-python
-          path: my-python.txt
+          path: my-python-*.txt
